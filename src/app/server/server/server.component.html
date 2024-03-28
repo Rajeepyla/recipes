@@ -1,0 +1,57 @@
+<p>server works!</p>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Details
+    </button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">User Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="person">
+                <p><label for="">First</label>
+                    <input type="text" formControlName="first">
+                </p>
+                <p><label for="">Last</label>
+                    <input type="text" formControlName="last">
+                </p>
+                <p> <label for="">Email</label>
+                    <input type="text" formControlName="email">
+                </p>
+        
+            </form>        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="uppdatedValue()"  >Update</button>
+          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" (click)="addDetails()" >Add details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">email</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let name of names">
+        <td>{{name.first}}</td>
+        <td>{{name.last}}</td>
+        <td>{{name.email}}</td>
+        <td>mdo</td>
+        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editDetails(name)">
+            Edit
+             </button> &nbsp;
+             <button class="btn btn-danger" (click)="deleting(name.id)">Delete</button>
+         </td>
+      </tr>
+     
+    </tbody>
+  </table>

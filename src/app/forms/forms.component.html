@@ -1,0 +1,21 @@
+<div class="container">
+    <form  [formGroup]="investments" class="mt-5">
+     <p>   <label for="floatingInput">What is the name of the bank </label> &nbsp;
+        <input type="text" formControlName="name" class="form-floating blank"></p>
+        <p>Who will receive management of securities portfolios </p>
+        <div *ngFor="let option of optionList let i=index" >
+            <input type="radio" [id]="'option'+i" [value]="option.option" formControlName="option">
+            <label  [for]="'option'+i">{{option.option}}</label>
+        </div>
+    </form>
+<!-- <p *ngFor="let detail of details">{{detail.name}} <button (click)="ShowDesignation(detail.designation)">Designation</button>
+    <span *ngIf="detail.designation === value"> {{value}}</span></p>  -->
+    <p *ngFor="let detail of details">
+        {{detail.name}} 
+        <button (click)="showAllDesignations()">Designations</button>
+        <span *ngIf="showDesignations">
+          {{ detail.designation }}
+        </span>
+      </p>
+      
+</div>
